@@ -10,14 +10,11 @@ prompt = "write only one number: average duration_in_mins"
 prompt = addToPrompt(prompt)
 
 trips_csv = genai.upload_file("trips.csv")
-# run_data = genai.upload_file("run_data.csv")
-# stops_date = genai.upload_file("stops_data.csv")
-# dwell_sorted = genai.upload_file("dwell_sorted.csv")
+run_data = genai.upload_file("run_data.csv")
+stops_data = genai.upload_file("stops_data.csv")
+dwell_sorted = genai.upload_file("dwell_sorted.csv")
 
-response = model.generate_content([prompt, trips_csv])
-
-#add next line in model.generate_content if it works
-#, run_data, stops_date, dwell_sorted
+response = model.generate_content([prompt, trips_csv, run_data, dwell_sorted, stops_data])
 
 print("Response:")
 print(response.text)
